@@ -22,12 +22,7 @@ export class UsersService {
 
   createUser(createUserInput: CreateUserInput) {
 
-    const user = {
-
-      id: this.users.length + 1,
-      ...createUserInput
-
-    }
+    const user = { id: this.users.length + 1, ...createUserInput }
 
     this.users.push(user)
 

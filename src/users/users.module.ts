@@ -9,6 +9,7 @@ import { UsersResolver } from './users.resolver';
   providers: [
 
     UsersResolver,
+
     UsersService
 
   ]

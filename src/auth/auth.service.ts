@@ -16,12 +16,14 @@ export class AuthService {
 
     async validateUser(username: string, password: string): Promise<any> {
 
-        const user = await this.userService.getUser(username)
+        const user = this.userService.getUser(username)
 
         const comparePassword = await bycrypt.compare(password, user?.password)
 
         if (user && comparePassword) {
+
             return user
+
         }
 
         const { password: userPassword, ...others } = user
@@ -46,7 +48,7 @@ export class AuthService {
 
     async register(registerUserInput: RegisterUserInput) {
 
-        const user = await this.userService.getUser(registerUserInput.username)
+        const user = this.userService.getUser(registerUserInput.username)
 
         if (user) {
 
@@ -56,12 +58,7 @@ export class AuthService {
 
         const password = await bycrypt.hash(registerUserInput.password, 10)
 
-        return this.userService.createUser({
-
-            ...registerUserInput,
-            password,
-
-        })
+        return this.userService.createUser({ ...registerUserInput, password })
 
     }
 

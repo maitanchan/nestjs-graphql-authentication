@@ -15,10 +15,13 @@ import { JwtStrategy } from './strategy/jwt.strategy';
     ConfigModule.forRoot({ envFilePath: '.env.development' }),
 
     PassportModule,
+
     UsersModule,
+
     JwtModule.register({
 
       signOptions: { expiresIn: '60s' },
+
       secret: process.env.JWT_SECRET
 
     }),
@@ -26,10 +29,15 @@ import { JwtStrategy } from './strategy/jwt.strategy';
   ],
 
   providers: [
+
     AuthResolver,
+
     AuthService,
+
     LocalStrategy,
+
     JwtStrategy
+
   ]
 
 })
